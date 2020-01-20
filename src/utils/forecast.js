@@ -13,12 +13,18 @@ const forecast = (lattitude, longitude, callback) => {
     } else if (body.error) {
       callback("getting some error", undefined);
     } else {
+      console.log(body.daily.data[0]);
+
       callback(
         undefined,
         body.daily.data[0].summary +
           " It is currently " +
           body.currently.temperature +
-          " there is a " +
+          " . high today is " +
+          body.daily.data[0].temperatureHigh +
+          " with a low of  " +
+          body.daily.data[0].temperatureLow +
+          " . There is a " +
           body.currently.precipProbability +
           "% chance of rain"
       );
